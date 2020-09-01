@@ -1,0 +1,64 @@
+.u-header {
+  width: 75%;
+}
+
+.u-header__navbar {
+  border-radius: 0.6rem;
+}
+
+@media (min-width: 992px) {
+  .u-header--floating-lg {
+    position: absolute;
+    right: 140px;
+    left: 153px;
+    margin-top: 2rem;
+  }
+}
+
+.btn {
+  box-shadow: none;
+}
+
+@media (min-width: 992px) {
+
+  .pr-lg-4,
+  .px-lg-4 {
+    padding-right: 1.5rem !important;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .space-3--lg {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    max-width: 1500px;
+    font-size: 20px;
+  }
+}
+
+.u-icon--primar-custom {
+  color: #21c87a;
+}
+
+@media (min-width: 992px) {
+  .serviceSingePage {
+    padding-bottom: 8rem;
+    padding-top: 14rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .contactTextFont {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) { 
+  .servicesCards {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    max-width: 1330px;
+    font-size: 16px;
+  }
+}

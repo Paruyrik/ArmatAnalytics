@@ -1,10 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql } from "gatsby";
 
-import Layout from '../components/Layout'
-import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
+import Layout from "../components/Layout";
+import ServiceFeatures from "../components/ServiceFeatures";
+import BlogRoll from "../components/BlogRoll";
+import Typed from "react-typed";
+import Service from '../components/service'
+import Gallery from "react-grid-gallery";
 
 export const IndexPageTemplate = ({
   image,
@@ -15,70 +18,88 @@ export const IndexPageTemplate = ({
   description,
   intro,
 }) => (
-  <div>
+  <main id="content">
     <div
-      className="full-width-image margin-top-0"
+      className="bg-img-hero-center"
       style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
+        //backgroundImage: `url(https://caso.com/wp-content/uploads/2019/12/Team-Photo-scaled.jpg)`,
+          backgroundImage: `url(${
+            !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+          })`,
+          backgroundPosition: `top left`,
+          backgroundAttachment: `fixed`,
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
-        }}
-      >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {subheading}
-        </h3>
+      <div className="container space-2 space-4-top--lg space-3-bottom--lg">
+        <div className="w-md-75">
+          <div className="mb-7">
+            <span className="d-block text-white text-uppercase mb-2">
+              {title}
+            </span>
+            <h1 className="display-2 font-size-48--md-down text-white">
+              {subheading} &nbsp;
+              <Typed
+                strings={["creative", "funny", "Space"]}
+                typeSpeed={60}
+                loop={true}
+                backSpeed={25}
+                backDelay={3000}
+              />
+            </h1>
+          </div>
+        </div>
       </div>
     </div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div className="columns">
+
+    <div className="bg-gray-100">
+        <div className="container space-2 space-3--lg">
+          <div className="row justify-content-lg-between align-items-lg-center">
+            <div className="col-lg-5 order-lg-2 mb-9 mb-lg-0">
+              <div className="mb-5">
+                <span className="u-label u-label--sm u-label--purple mb-3">
+                  About Us
+                </span>
+                <h2 className="h3">
+                  We always welcome keen to learn folks to our team
+                </h2>
+                <p>
+                  The time has come to bring those ideas and plans to life. This
+                  is where we really begin to visualize your napkin sketches and
+                  make them into beautiful pixels.
+                </p>
+                <p>
+                  Now that your brand is all dressed up and ready to party, it's
+                  time to release it to the world. By the way, let's celebrate
+                  already.
+                </p>
+              </div>
+
+              <a className="btn btn-sm btn-primary" href="index.html">
+                Learn More <i className="fa fa-angle-right ml-2"></i>
+              </a>
+            </div>
+
+            <div className="col-lg-6 order-lg-1">
+               <Gallery images={IMAGES} />
+              </div>
+            </div>
+          </div>
+        </div> 
+
+
+    <div className="container space-2 servicesCards">
+      <div className="w-md-80 w-lg-60 text-center mx-md-auto mb-9">
+        <span className="u-label u-label--sm u-label--purple mb-3">
+          {mainpitch.title}
+        </span>
+        <h2 className="h3">{mainpitch.subTitle}</h2>
+        <p>{mainpitch.description}</p>
+      </div>
+       <Service />
+      {/* <ServiceFeatures gridItems={intro.blurbs} /> */}
+    </div>
+
+    {/* <div className="columns">
                   <div className="column is-12">
                     <h3 className="has-text-weight-semibold is-size-2">
                       {heading}
@@ -86,7 +107,7 @@ export const IndexPageTemplate = ({
                     <p>{description}</p>
                   </div>
                 </div>
-                <Features gridItems={intro.blurbs} />
+                <ServiceFeatures gridItems={intro.blurbs} />
                 <div className="columns">
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/products">
@@ -104,15 +125,9 @@ export const IndexPageTemplate = ({
                       Read more
                     </Link>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-)
+                </div> */}
+  </main>
+);
 
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -124,10 +139,10 @@ IndexPageTemplate.propTypes = {
   intro: PropTypes.shape({
     blurbs: PropTypes.array,
   }),
-}
+};
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { frontmatter } = data.markdownRemark;
 
   return (
     <Layout>
@@ -141,8 +156,8 @@ const IndexPage = ({ data }) => {
         intro={frontmatter.intro}
       />
     </Layout>
-  )
-}
+  );
+};
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -150,9 +165,9 @@ IndexPage.propTypes = {
       frontmatter: PropTypes.object,
     }),
   }),
-}
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
@@ -166,10 +181,14 @@ export const pageQuery = graphql`
             }
           }
         }
+        TypedStrings {
+          text
+        }
         heading
         subheading
         mainpitch {
           title
+          subTitle
           description
         }
         description
@@ -183,6 +202,7 @@ export const pageQuery = graphql`
               }
             }
             text
+            category
           }
           heading
           description
@@ -190,4 +210,51 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
+
+
+const IMAGES = [
+  {
+    src: "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_b.jpg",
+    thumbnail:
+      "https://c2.staticflickr.com/9/8817/28973449265_07e3aa5d2e_n.jpg",
+    thumbnailWidth: 320,
+    thumbnailHeight: 200,
+    // isSelected: true,
+    caption: "After Rain (Jeshu John - designerspics.com)",
+  },
+  {
+    src: "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_b.jpg",
+    thumbnail:
+      "https://c2.staticflickr.com/9/8356/28897120681_3b2c0f43e0_n.jpg",
+    thumbnailWidth: 320,
+    thumbnailHeight: 200,
+    tags: [
+      { value: "Ocean", title: "Ocean" },
+      { value: "People", title: "People" },
+    ],
+    caption: "Boats (Jeshu John - designerspics.com)",
+  },
+
+  {
+    src: "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_b.jpg",
+    thumbnail:
+      "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_n.jpg",
+    thumbnailWidth: 320,
+    thumbnailHeight: 200,
+  },
+  {
+    src: "https://caso.com/wp-content/uploads/2019/12/Team-Photo-scaled.jpg",
+    thumbnail:
+      "https://caso.com/wp-content/uploads/2019/12/Team-Photo-scaled.jpg",
+    thumbnailWidth: 320,
+    thumbnailHeight: 212,
+  },
+  {
+    src: "https://caso.com/wp-content/uploads/2019/12/Team-Photo-scaled.jpg",
+    thumbnail:
+      "https://caso.com/wp-content/uploads/2019/12/Team-Photo-scaled.jpg",
+    thumbnailWidth: 320,
+    thumbnailHeight: 200,
+  },
+];
