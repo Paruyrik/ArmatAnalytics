@@ -122,7 +122,7 @@ const IMAGES = [
     thumbnail:
       "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_n.jpg",
     thumbnailWidth: 350,
-    // thumbnailHeight: 200,
+    thumbnailHeight: 200,
     thumbnailCaption: (
       <a
         class="cbp-lightbox u-icon .u-icon--primar-custom rounded-circle"
@@ -181,10 +181,7 @@ const OurWorkPage = () => (
               >
                 Hire Us
               </Link>
-              <Link
-                class="btn btn-dark btn-wide mb-2 mb-md-0"
-                to="/contact"
-              >
+              <Link class="btn btn-dark btn-wide mb-2 mb-md-0" to="/contact">
                 Contact Us
               </Link>
               {/* <!-- End Buttons --> */}
