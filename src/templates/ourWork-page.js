@@ -122,7 +122,7 @@ const IMAGES = [
     thumbnail:
       "https://c4.staticflickr.com/9/8887/28897124891_98c4fdd82b_n.jpg",
     thumbnailWidth: 350,
-    thumbnailHeight: 200,
+    // thumbnailHeight: 200,
     thumbnailCaption: (
       <a
         class="cbp-lightbox u-icon .u-icon--primar-custom rounded-circle"
